@@ -74,7 +74,15 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-exchange = ccxt.binance({"enableRateLimit": True})
+exchange = ccxt.binance({
+    "enableRateLimit": True,
+    "urls": {
+        "api": {
+            "public": "https://api1.binance.com/api/v3",
+            "private": "https://api1.binance.com/api/v3",
+        }
+    }
+})
 
 # Son sinyal takibi (tekrar önleme)
 last_signal: dict = {"type": None, "price": 0.0, "time": None}
